@@ -1,15 +1,25 @@
 {
   "name": "dopedevs",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "package.json",
-  "author": "Scott Spence <spences10apps@gmail.com>",
-  "license": "UNLICENSED",
+  "author": {
+    "name": "Scott Spence",
+    "email": "yo@scottspence.dev",
+    "url": "https://scottspence.com"
+  },
+  "license": "MIT",
   "scripts": {
-    "start": "sanity start",
+    "start": "sanity start --port 4444",
     "test": "sanity check",
-    "build": "sanity build"
+    "build": "sanity build",
+    "format": "pretty-quick"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "keywords": [
     "sanity"
@@ -24,7 +34,13 @@
     "@sanity/vision": "^2.0.9",
     "prop-types": "^15.7",
     "react": "^17.0",
-    "react-dom": "^17.0"
+    "react-dom": "^17.0",
+    "react-icons": "^4.1.0",
+    "sanity-plugin-markdown": "^1.0.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "husky": "^4.3.4",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0"
+  }
 }
