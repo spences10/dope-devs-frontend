@@ -42,5 +42,11 @@ export default {
       type: "markdown",
       description: "Tell us about this dev",
     },
+    {
+      name: "technology",
+      title: "Technologies",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "technology" }] }],
+    },
   ],
 };
