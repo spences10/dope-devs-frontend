@@ -48,5 +48,11 @@ export default {
       type: "array",
       of: [{ type: "reference", to: [{ type: "technology" }] }],
     },
+    {
+      name: "likes",
+      title: "Likes",
+      type: "number",
+    },
   ],
+  initialValue: { likes: 0 },
 };
