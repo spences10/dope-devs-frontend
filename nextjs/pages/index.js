@@ -15,7 +15,7 @@ export default function Home({ devs }) {
           return (
             <article key={dev._id}>
               <h2>
-                <Link href={`devs/${dev.slug}`}>
+                <Link href={`dev/${dev.slug}`}>
                   <a>{dev.name}</a>
                 </Link>
               </h2>
