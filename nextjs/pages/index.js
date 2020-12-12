@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import sanityClient from "../sanity-client";
 import styles from "../styles/Home.module.css";
 
@@ -9,10 +10,18 @@ export default function Home({ devs }) {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <pre>{JSON.stringify(devs, null, 2)}</pre>
       <main className={styles.main}>
-        <div></div>
+        {devs.map((dev) => {
+          return (
+            <article key={dev._id}>
+              <h2>
+                <Link href={`devs/${dev.slug}`}>
+                  <a>{dev.name}</a>
+                </Link>
+              </h2>
+            </article>
+          );
+        })}
       </main>
     </div>
   );
@@ -20,7 +29,11 @@ export default function Home({ devs }) {
 
 export async function getStaticProps() {
   const devs = await sanityClient.fetch(
-    `*[_type == 'dev']{ 'slug': slug.current }`
+    `*[_type == 'dev']{ 
+      _id,
+      name,
+      'slug': slug.current 
+    }`
   );
 
   return {
