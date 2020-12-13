@@ -33,7 +33,7 @@ export async function getStaticProps() {
       _id,
       name,
       'slug': slug.current 
-    }`
+    } | order(name asc)`
   )
 
   return {

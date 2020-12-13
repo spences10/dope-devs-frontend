@@ -1,7 +1,14 @@
+import Image from 'next/image'
 import { useState } from 'react'
 import sanityClient from '../../sanity-client'
 
-export default function DevPage({ name, description, likes, _id }) {
+export default function DevPage({
+  name,
+  description,
+  likes,
+  _id,
+  imageUrl,
+}) {
   const [likeState, setLikes] = useState(likes)
 
   const addLike = async () => {
@@ -17,6 +24,7 @@ export default function DevPage({ name, description, likes, _id }) {
     <>
       <h1>{name}</h1>
       <h3>{description}</h3>
+      <Image src={imageUrl} alt={name} width={500} height={500} />
       <button onClick={addLike}>{likeState} likes</button>
     </>
   )
@@ -29,7 +37,8 @@ export async function getStaticProps({ params }) {
       _id,
       name,
       description,
-      likes
+      likes,
+      "imageUrl": image.asset->url,
     }`
   )
   return { props: { ...devs } }
