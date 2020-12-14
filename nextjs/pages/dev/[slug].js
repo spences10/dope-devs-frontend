@@ -8,6 +8,7 @@ export default function DevPage({
   likes,
   _id,
   imageUrl,
+  technology,
 }) {
   const [likeState, setLikes] = useState(likes)
 
@@ -26,6 +27,10 @@ export default function DevPage({
       <h3>{description}</h3>
       <Image src={imageUrl} alt={name} width={500} height={500} />
       <button onClick={addLike}>{likeState} likes</button>
+      {technology &&
+        technology.map(tech => {
+          return <p>{tech.name}</p>
+        })}
     </>
   )
 }
@@ -39,6 +44,7 @@ export async function getStaticProps({ params }) {
       description,
       likes,
       "imageUrl": image.asset->url,
+      technology[]->,
     }`
   )
   return { props: { ...devs } }
