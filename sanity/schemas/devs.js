@@ -54,5 +54,5 @@ export default {
       type: "number",
     },
   ],
-  initialValue: { likes: 0 },
+  initialValue: { likes: 0, devHomepageUrl: `https://` },
 };
