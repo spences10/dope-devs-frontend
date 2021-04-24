@@ -1,13 +1,16 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { Footer } from './footer'
 import { Header } from './header'
-
+import { Showcase } from './showcase'
 export const Layout = ({
   title,
   keywords,
   description,
   children,
 }) => {
+  const router = useRouter()
+
   return (
     <div>
       <Head>
@@ -16,6 +19,7 @@ export const Layout = ({
         <meta name="keywords" content={keywords} />
       </Head>
       <Header />
+      {router.pathname === '/' && <Showcase />}
       <div>{children}</div>
       <Footer />
     </div>
