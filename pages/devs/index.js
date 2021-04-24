@@ -7,7 +7,7 @@ export default function DevsPage({ devs, page, total }) {
   return (
     <Layout>
       <h1>Devs Index</h1>
-      {devs.length === 0 && <h3>No events to show</h3>}
+      {devs.length === 0 && <h3>No dope devs to show</h3>}
 
       {devs.map(dev => (
         <DevItem key={dev.id} dev={dev} />

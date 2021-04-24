@@ -12,7 +12,7 @@ export default function SearchPage({ devs }) {
     <Layout title="Search Results">
       <Link href="/devs">Go Back</Link>
       <h1>Search Results for {router.query.term}</h1>
-      {devs.length === 0 && <h3>No events to show</h3>}
+      {devs.length === 0 && <h3>No dope devs to show</h3>}
 
       {devs.map(dev => (
         <DevItem key={dev.id} dev={dev} />

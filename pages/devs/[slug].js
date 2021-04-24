@@ -2,12 +2,16 @@ import { Layout } from '@/components/layout'
 import { API_URL } from 'config'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function DevPage({ dev }) {
   return (
     <Layout>
       <div>
         <h1>{dev.name}</h1>
+
+        <ToastContainer />
 
         {dev.image && (
           <div>
