@@ -1,7 +1,9 @@
+import { Layout } from '../../components/layout'
+
 export default function DevsPage() {
   return (
-    <div>
+    <Layout>
       <h1>Devs Page</h1>
-    </div>
+    </Layout>
   )
 }

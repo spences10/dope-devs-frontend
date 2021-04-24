@@ -1,7 +1,9 @@
+import { Layout } from '../../components/layout'
+
 export default function AddDevPage() {
   return (
-    <div>
+    <Layout title="Add new dope dev!">
       <h1>Add Dev</h1>
-    </div>
+    </Layout>
   )
 }
