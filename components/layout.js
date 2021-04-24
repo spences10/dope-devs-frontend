@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { Footer } from './footer'
+import { Header } from './header'
 
 export const Layout = ({
   title,
@@ -13,8 +15,9 @@ export const Layout = ({
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
       </Head>
-
+      <Header />
       <div>{children}</div>
+      <Footer />
     </div>
   )
 }
