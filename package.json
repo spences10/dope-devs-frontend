@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "autoprefixer": "10.3.1",
-    "postcss": "8.2.12",
+    "postcss": "8.3.6",
     "stylelint": "13.13.1",
     "stylelint-config-standard": "22.0.0",
     "tailwindcss": "2.1.2"
