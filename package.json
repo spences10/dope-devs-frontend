@@ -16,7 +16,7 @@
     "react-toastify": "8.0.2"
   },
   "devDependencies": {
-    "autoprefixer": "10.3.4",
+    "autoprefixer": "10.3.5",
     "postcss": "8.3.6",
     "stylelint": "13.13.1",
     "stylelint-config-standard": "22.0.0",
