@@ -3,9 +3,11 @@ lockfileVersion: 5.3
 specifiers:
   '@sveltejs/kit': next
   '@tailwindcss/typography': ^0.4.1
+  '@urql/svelte': ^1.3.2
   autoprefixer: ^10.3.7
   cssnano: ^5.0.8
   daisyui: ^1.16.2
+  graphql: ^16.0.1
   postcss: ^8.3.9
   postcss-load-config: ^3.1.0
   prettier: ^2.4.1
@@ -17,9 +19,11 @@ specifiers:
 devDependencies:
   '@sveltejs/kit': 1.0.0-next.196_svelte@3.44.1
   '@tailwindcss/typography': 0.4.1_tailwindcss@2.2.19
+  '@urql/svelte': 1.3.2_graphql@16.0.1+svelte@3.44.1
   autoprefixer: 10.4.0_postcss@8.3.11
   cssnano: 5.0.10_postcss@8.3.11
   daisyui: 1.16.2
+  graphql: 16.0.1
   postcss: 8.3.11
   postcss-load-config: 3.1.0
   prettier: 2.4.1
@@ -49,6 +53,14 @@ packages:
       '@babel/helper-validator-identifier': 7.15.7
       chalk: 2.4.2
       js-tokens: 4.0.0
+    dev: true
+
+  /@graphql-typed-document-node/core/3.1.0_graphql@16.0.1:
+    resolution: {integrity: sha512-wYn6r8zVZyQJ6rQaALBEln5B1pzxb9shV5Ef97kTvn6yVGrqyXVnDqnU24MXnFubR+rZjBY9NWuxX3FB2sTsjg==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    dependencies:
+      graphql: 16.0.1
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -156,6 +168,28 @@ packages:
     resolution: {integrity: sha512-DPSXNJ1rYLo88GyF9tuB4bsYGfpKI1a4+wOQmc+LI1SUoocm9QLRSpz0GxxuyjmJsYFIQo/dDlRSSpIXngff+w==}
     dependencies:
       '@types/node': 16.11.7
+    dev: true
+
+  /@urql/core/2.3.5_graphql@16.0.1:
+    resolution: {integrity: sha512-kM/um4OjXmuN6NUS/FSm7dESEKWT7By1kCRCmjvU4+4uEoF1cd4TzIhQ7J1I3zbDAFhZzmThq9X0AHpbHAn3bA==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    dependencies:
+      '@graphql-typed-document-node/core': 3.1.0_graphql@16.0.1
+      graphql: 16.0.1
+      wonka: 4.0.15
+    dev: true
+
+  /@urql/svelte/1.3.2_graphql@16.0.1+svelte@3.44.1:
+    resolution: {integrity: sha512-L/fSKb+jTrxfeKbnA4+7T69sL0XlzMv4d9i0j9J+fCkBCpUOGgPsYzsyBttbVbjrlaw61Wrc6J2NKuokrd570w==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+      svelte: ^3.0.0
+    dependencies:
+      '@urql/core': 2.3.5_graphql@16.0.1
+      graphql: 16.0.1
+      svelte: 3.44.1
+      wonka: 4.0.15
     dev: true
 
   /acorn-node/1.8.2:
@@ -855,6 +889,11 @@ packages:
 
   /graceful-fs/4.2.8:
     resolution: {integrity: sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==}
+    dev: true
+
+  /graphql/16.0.1:
+    resolution: {integrity: sha512-oPvCuu6dlLdiz8gZupJ47o1clgb72r1u8NDBcQYjcV6G/iEdmE11B1bBlkhXRvV0LisP/SXRFP7tT6AgaTjpzg==}
+    engines: {node: ^12.22.0 || ^14.16.0 || >=16.0.0}
     dev: true
 
   /has-flag/3.0.0:
@@ -1917,6 +1956,10 @@ packages:
       rollup: 2.60.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /wonka/4.0.15:
+    resolution: {integrity: sha512-U0IUQHKXXn6PFo9nqsHphVCE5m3IntqZNB9Jjn7EB1lrR7YTDY3YWgFvEvwniTzXSvOH/XMzAZaIfJF/LvHYXg==}
     dev: true
 
   /wrappy/1.0.2:
