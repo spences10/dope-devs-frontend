@@ -6,10 +6,18 @@
   query(developers)
 </script>
 
-<pre>{JSON.stringify($developers, null, 2)}</pre>
-
-<h1>Welcome to SvelteKit wheeee</h1>
-<p>
-  Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the
-  documentation
-</p>
+{#if $developers.fetching}
+  <p>Loading</p>
+{:else if $developers.error}
+  <p>Oops! {$developers.error.message}</p>
+{:else}
+  <ul>
+    {#each $developers.data.developers as developer}
+      <li>
+        <a href={`/developers/${developer.slug}`}>
+          <p>{developer.name}</p>
+        </a>
+      </li>
+    {/each}
+  </ul>
+{/if}
