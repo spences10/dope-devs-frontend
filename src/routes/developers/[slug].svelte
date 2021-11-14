@@ -7,7 +7,7 @@
 
 <script>
   export let slug
-  import { developerQuery } from '$lib/gql/queries'
+  import { developerQuery } from '@gql/queries'
   import { operationStore, query } from '@urql/svelte'
 
   const developer = operationStore(developerQuery, { slug })

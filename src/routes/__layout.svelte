@@ -1,5 +1,5 @@
 <script>
-  import Navbar from '$lib/components/navbar.svelte'
+  import Navbar from '@components/navbar.svelte'
   import { initClient } from '@urql/svelte'
   import '../app.css'
 

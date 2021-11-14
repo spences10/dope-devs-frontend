@@ -1,6 +1,6 @@
 <script>
-  import Developer from '$lib/components/developer.svelte'
-  import { developersQuery } from '$lib/gql/queries'
+  import Developer from '@components/developer.svelte'
+  import { developersQuery } from '@gql/queries'
   import { operationStore, query } from '@urql/svelte'
 
   const developers = operationStore(developersQuery)
