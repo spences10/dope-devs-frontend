@@ -17,3 +17,20 @@ export const developersQuery = gql`
     }
   }
 `
+
+export const developerQuery = gql`
+  query Developer($slug: String!) {
+    developer(where: { slug: $slug }) {
+      name
+      avatar
+      bio
+      country {
+        latitude
+        longitude
+      }
+      technologies {
+        name
+      }
+    }
+  }
+`
