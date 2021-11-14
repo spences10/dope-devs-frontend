@@ -6,6 +6,10 @@
   query(developers)
 </script>
 
+<svelte:head>
+  <title>Dope Devs! Welcome</title>
+</svelte:head>
+
 {#if $developers.fetching}
   <p>Loading</p>
 {:else if $developers.error}

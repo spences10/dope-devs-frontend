@@ -1,4 +1,5 @@
 <script>
+  import Navbar from '$lib/components/navbar.svelte'
   import { initClient } from '@urql/svelte'
   import '../app.css'
 
@@ -7,6 +8,7 @@
   })
 </script>
 
+<Navbar />
 <main class="container max-w-xl mx-auto px-4">
   <slot />
 </main>
