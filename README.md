@@ -1,3 +1,3 @@
 # Dope Devs
 
-Your favourite devs and the tech thy use
+The place to add and upvote your favourtied devs!

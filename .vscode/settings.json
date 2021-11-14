@@ -1,9 +1,5 @@
 {
-  "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#FF2C70",
-    "titleBar.inactiveBackground": "#FF2C70CC"
-  },
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false
+  "git.enableSmartCommit": true,
+  "git.postCommitCommand": "sync",
+  "cSpell.words": ["sveltejs", "urql", "vercel", "VITE"]
 }
