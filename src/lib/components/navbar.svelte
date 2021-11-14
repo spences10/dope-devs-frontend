@@ -1,8 +1,6 @@
-<div
-  class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box"
->
+<div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content">
   <div class="px-2 mx-2 navbar-start">
-    <span class="text-lg font-bold"> daisyUI </span>
+    <span class="text-lg font-bold"> Dope Devs </span>
   </div>
   <div class="hidden px-2 mx-2 navbar-center lg:flex">
     <div class="flex items-stretch">

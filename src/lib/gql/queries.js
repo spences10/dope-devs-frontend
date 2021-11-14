@@ -14,6 +14,13 @@ export const developersQuery = gql`
       technologies {
         name
       }
+      profileImage {
+        url(
+          transformation: {
+            image: { resize: { width: 200, height: 200, fit: clip } }
+          }
+        )
+      }
     }
   }
 `
