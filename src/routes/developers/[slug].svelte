@@ -14,8 +14,6 @@
   query(developer)
 </script>
 
-<!-- <pre>{JSON.stringify($developer, null, 2)}</pre> -->
-
 {#if $developer.fetching}
   <p>Loading</p>
 {:else if $developer.error}
