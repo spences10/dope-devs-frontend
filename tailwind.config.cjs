@@ -1,12 +1,15 @@
+const daisyui = require('daisyui');
+const typography = require('@tailwindcss/typography');
+
+/** @type {import('tailwindcss').Config}*/
 const config = {
-  mode: 'jit',
-  purge: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 
-  theme: {
-    extend: {},
-  },
+	theme: {
+		extend: {},
+	},
 
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
-}
+	plugins: [typography, daisyui],
+};
 
-module.exports = config
+module.exports = config;
