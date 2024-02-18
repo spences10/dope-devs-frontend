@@ -1,74 +1,39 @@
-import { lucia } from '$lib/server/auth';
-import { fail, redirect } from '@sveltejs/kit';
-import { Argon2id } from 'oslo/password';
-
 import { db } from '$lib/server/database';
-import { user } from '$lib/server/schema/user';
-import { eq } from 'drizzle-orm';
-import type { Actions, PageServerLoad } from './$types';
+import { country } from '$lib/server/schema';
+import {
+	dope_dev,
+	insert_dope_dev_schema,
+} from '$lib/server/schema/dope-dev';
+import { redirect } from '@sveltejs/kit';
+import type { Action, Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async event => {
 	if (!event.locals.user) {
 		return redirect(302, '/login');
 	}
+
+	const countries = await db.select().from(country).execute();
+
 	return {
 		user: event.locals.user,
+		countries,
 	};
 };
 
-export const actions: Actions = {
-	default: async event => {
-		const form_data = await event.request.formData();
-		const username = form_data.get('username');
-		const password = form_data.get('password');
+const submit_dope_dev: Action = async event => {
+	const formDataObj = Object.fromEntries(
+		(await event.request.formData()).entries(),
+	);
 
-		if (
-			typeof username !== 'string' ||
-			username.length < 3 ||
-			username.length > 31 ||
-			!/^[a-z0-9_-]+$/.test(username)
-		) {
-			return fail(400, {
-				message: 'Invalid username',
-			});
-		}
-		if (
-			typeof password !== 'string' ||
-			password.length < 6 ||
-			password.length > 255
-		) {
-			return fail(400, {
-				message: 'Invalid password',
-			});
-		}
+	const insert_data = insert_dope_dev_schema.safeParse(formDataObj);
+	if (!insert_data.success) {
+		// Handle validation errors
+		return { status: 400, body: { errors: insert_data.error } };
+	}
 
-		const [existing_user] = await db
-			.select()
-			.from(user)
-			.where(eq(user.username, username));
-		if (!existing_user) {
-			return fail(400, {
-				message: 'Incorrect username or password',
-			});
-		}
+	await db.insert(dope_dev).values(insert_data.data).execute();
 
-		const valid_password = await new Argon2id().verify(
-			existing_user.password,
-			password,
-		);
-		if (!valid_password) {
-			return fail(400, {
-				message: 'Incorrect username or password',
-			});
-		}
-
-		const session = await lucia.createSession(existing_user.id, {});
-		const session_cookie = lucia.createSessionCookie(session.id);
-		event.cookies.set(session_cookie.name, session_cookie.value, {
-			path: '.',
-			...session_cookie.attributes,
-		});
-
-		return redirect(302, '/');
-	},
+	return redirect(302, '/');
 };
+
+export const actions: Actions = { submit_dope_dev };
