@@ -4,19 +4,20 @@ import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 import { country } from './country';
 
 export const dope_dev = sqliteTable('dope_dev', {
-	id: text('id').primaryKey(),
+	id: integer('id').primaryKey({ autoIncrement: true }),
 	name: text('name'),
 	title: text('title'),
 	avatar: text('avatar'),
 	bio: text('bio'),
 	likes: integer('likes'),
-	country_id: integer('country_id')
+	country_id: text('country_id')
 		.notNull()
 		.references(() => country.id),
+	published: integer('published').default(0),
 	created_at: integer('created_at', { mode: 'timestamp' }).default(
 		sql`(strftime('%s', 'now'))`,
 	),
-	update_at: integer('updated_at', { mode: 'timestamp' }).default(
+	updated_at: integer('updated_at', { mode: 'timestamp' }).default(
 		sql`(strftime('%s', 'now'))`,
 	),
 });

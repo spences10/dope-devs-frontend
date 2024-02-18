@@ -11,7 +11,7 @@ export const user = sqliteTable('user', {
 	created_at: integer('created_at', { mode: 'timestamp' }).default(
 		sql`(strftime('%s', 'now'))`,
 	),
-	update_at: integer('updated_at', { mode: 'timestamp' }).default(
+	updated_at: integer('updated_at', { mode: 'timestamp' }).default(
 		sql`(strftime('%s', 'now'))`,
 	),
 });
