@@ -21,14 +21,19 @@ export const load: PageServerLoad = async event => {
 };
 
 const submit_dope_dev: Action = async event => {
-	const formDataObj = Object.fromEntries(
+	const form_data = Object.fromEntries(
 		(await event.request.formData()).entries(),
 	);
 
-	const insert_data = insert_dope_dev_schema.safeParse(formDataObj);
+	const insert_data = insert_dope_dev_schema.safeParse(form_data);
 	if (!insert_data.success) {
-		// Handle validation errors
-		return { status: 400, body: { errors: insert_data.error } };
+		// Convert validation errors to a serializable format
+		const errors = insert_data.error.issues.map(issue => ({
+			field: issue.path[0],
+			message: issue.message,
+		}));
+
+		return { status: 400, body: { errors } };
 	}
 
 	await db.insert(dope_dev).values(insert_data.data).execute();
