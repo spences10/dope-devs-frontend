@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { enhance } from "$app/forms";
+	import { enhance } from '$app/forms';
 
-	import type { ActionData } from "./$types";
+	import type { ActionData } from './$types';
 
 	export let form: ActionData;
 </script>
@@ -13,6 +13,6 @@
 	<label for="password">Password</label>
 	<input type="password" name="password" id="password" /><br />
 	<button>Continue</button>
-	<p>{form?.message ?? ""}</p>
+	<p>{form?.message ?? ''}</p>
 </form>
 <a href="/register">Create an account</a>
