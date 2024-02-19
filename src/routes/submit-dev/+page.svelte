@@ -8,6 +8,7 @@
 		title: '',
 		avatar: '',
 		bio: '',
+		selected_technologies: [5, 7, 9],
 	});
 </script>
 
@@ -16,7 +17,7 @@
 <form
 	method="POST"
 	action="?/submit_dope_dev"
-	class="form-control space-y-4"
+	class="form-control"
 	use:enhance={() => {
 		return ({ update, result }) => {
 			console.log('=====================');
@@ -26,18 +27,20 @@
 		};
 	}}
 >
-	<label>
-		<div class="label">
-			<span class="label-text">Pick the best fantasy franchise</span>
-		</div>
-		<input
-			type="text"
-			bind:value={form_data.name}
-			name="name"
-			placeholder="Name"
-			required
-			class="input input-primary w-full max-w-xs"
-		/>
+	<label for="name" class="label">
+		<span class="label-text text-base"> Dev: </span>
+	</label>
+	<input
+		type="text"
+		bind:value={form_data.name}
+		name="name"
+		placeholder="Name"
+		required
+		class="input input-primary w-full max-w-xs text-base"
+	/>
+
+	<label for="title" class="label">
+		<span class="label-text text-base"> Title: </span>
 	</label>
 	<input
 		type="text"
@@ -45,25 +48,52 @@
 		name="title"
 		placeholder="Title"
 		required
-		class="input input-primary w-full max-w-xs"
+		class="input input-primary w-full max-w-xs text-base"
 	/>
+
+	<label for="avatar" class="label">
+		<span class="label-text text-base"> Avatar URL: </span>
+	</label>
 	<input
 		type="text"
 		bind:value={form_data.avatar}
 		name="avatar"
 		placeholder="Avatar URL"
-		class="input input-primary w-full max-w-xs"
+		class="input input-primary w-full max-w-xs text-base"
 	/>
+
+	<label for="avatar" class="label">
+		<span class="label-text text-base"> Bio: </span>
+	</label>
 	<textarea
 		bind:value={form_data.bio}
 		name="bio"
 		placeholder="Bio"
-		class="textarea textarea-primary w-full max-w-xs"
+		class="textarea textarea-primary w-full max-w-xs text-base"
 	/>
+
+	<label for="selected_technologies" class="label">
+		<span class="label-text text-base"> Technologies: </span>
+	</label>
+	<select
+		multiple
+		bind:value={form_data.selected_technologies}
+		name="selected_technologies"
+		class="select select-primary mb-10 w-full max-w-xs text-base"
+	>
+		<option disabled value="">Select technologies</option>
+		{#each data.technologies as technology}
+			<option value={technology.id}>{technology.name}</option>
+		{/each}
+	</select>
+
+	<label for="country_id" class="label">
+		<span class="label-text text-base"> Country: </span>
+	</label>
 	<select
 		bind:value={form_data.selected_country}
 		name="country_id"
-		class="select select-primary w-full max-w-xs"
+		class="select select-primary mb-10 w-full max-w-xs text-base"
 	>
 		<option disabled value="">Select a country</option>
 		{#each data.countries as country}
@@ -73,7 +103,7 @@
 
 	<button
 		type="submit"
-		class="max-x-xs btn btn-primary w-full max-w-xs"
+		class="max-x-xs btn btn-primary w-full max-w-xs text-base"
 	>
 		Submit
 	</button>
