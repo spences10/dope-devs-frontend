@@ -30,7 +30,6 @@ const submit_dope_dev: Action = async event => {
 	const form_data = await event.request.formData();
 
 	const name = form_data.get('name') as string;
-	const title = form_data.get('title') as string;
 	const avatar = form_data.get('avatar') as string;
 	const bio = form_data.get('bio') as string;
 	const selected_country = form_data.get('country_id') as string;
@@ -41,7 +40,6 @@ const submit_dope_dev: Action = async event => {
 	console.log('=====================');
 	console.log('form_data', {
 		name,
-		title,
 		avatar,
 		bio,
 		selected_country,
@@ -51,7 +49,6 @@ const submit_dope_dev: Action = async event => {
 
 	const insert_data = insert_dope_dev_schema.safeParse({
 		name,
-		title,
 		avatar,
 		bio,
 		country_id: selected_country,

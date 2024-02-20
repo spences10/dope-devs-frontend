@@ -8,11 +8,9 @@
 		title: '',
 		avatar: '',
 		bio: '',
-		selected_technologies: [5, 7, 9],
+		selected_technologies: [],
 	});
 </script>
-
-<pre>{JSON.stringify(form_data, null, 2)}</pre>
 
 <form
 	method="POST"
@@ -35,18 +33,6 @@
 		bind:value={form_data.name}
 		name="name"
 		placeholder="Name"
-		required
-		class="input input-primary w-full max-w-xs text-base"
-	/>
-
-	<label for="title" class="label">
-		<span class="label-text text-base"> Title: </span>
-	</label>
-	<input
-		type="text"
-		bind:value={form_data.title}
-		name="title"
-		placeholder="Title"
 		required
 		class="input input-primary w-full max-w-xs text-base"
 	/>
@@ -108,3 +94,5 @@
 		Submit
 	</button>
 </form>
+
+<pre>{JSON.stringify(form_data, null, 2)}</pre>
