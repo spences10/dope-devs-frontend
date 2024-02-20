@@ -6,7 +6,6 @@ import { country } from './country';
 export const dope_dev = sqliteTable('dope_dev', {
 	id: integer('id').primaryKey({ autoIncrement: true }),
 	name: text('name'),
-	title: text('title'),
 	avatar: text('avatar'),
 	bio: text('bio'),
 	likes: integer('likes'),
