@@ -1,24 +1,27 @@
--- Insert dope_devs into the dope_dev table
+-- Insert dope_devs into the dope_dev table with published set to true
 INSERT INTO
-  dope_dev (name, avatar, bio, country_id)
+  dope_dev (name, avatar, bio, country_id, published)
 VALUES
   (
     'Wes Bos',
     'https://pbs.twimg.com/profile_images/877525007185858562/7G9vGTca_400x400.jpg',
-    'Fullstack Dev  ❯ JS⚛ CSS Node  ❯ http://BeginnerJavaScript.com  ❯ http://ReactForBeginners.com  ❯ http://JavaScript30.com  ❯  http://wesbos.com/courses  ❯ 🔥 Tips  ❯  ♥ @KaitBos  ❯ @SyntaxFM',
-    'CA'
+    'Fullstack Dev   ❯ JS⚛ CSS Node   ❯ http://BeginnerJavaScript.com   ❯ http://ReactForBeginners.com   ❯ http://JavaScript30.com   ❯  http://wesbos.com/courses   ❯ 🔥 Tips   ❯   ♥ @KaitBos   ❯ @SyntaxFM',
+    'CA',
+    1
   ),
   (
     'Rich Harris',
     'https://pbs.twimg.com/profile_images/557940120184041473/bFyXy8Pu_400x400.jpeg',
     'Cheese fan. I work on @sveltejs at @vercel',
-    'US'
+    'US',
+    1
   ),
   (
     'Scott Tolinski',
     'https://pbs.twimg.com/profile_images/1404817306031562756/5cHmpCuL_400x400.jpg',
     'Creator of @leveluptuts | Co-host of http://Syntax.fm | Youtuber: http://youtube.com/c/leveluptuts | Robotops Crew Bboy clips: http://instagram.com/stolinski/',
-    'US'
+    'US',
+    1
   );
 
 -- Insert associations into the dev_technology table
