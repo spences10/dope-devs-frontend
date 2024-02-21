@@ -7,9 +7,9 @@
 <a href="/submit-dev" class="btn">Add Dope Dev</a>
 
 <form method="POST" action="/logout">
-	<button>Logout</button>
+	<button class="btn">Logout</button>
 </form>
 
-<main class="container max-w-xl mx-auto px-4">
+<main class="container mx-auto max-w-7xl px-4">
 	{@render children()}
 </main>

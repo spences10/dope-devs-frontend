@@ -19,6 +19,8 @@
 
 <h1>Welcome to Dope Devs</h1>
 
-{#each data.all_dope_devs as dev}
-	<Developer {dev} />
-{/each}
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+	{#each data.all_dope_devs as dev}
+		<Developer {dev} />
+	{/each}
+</div>
