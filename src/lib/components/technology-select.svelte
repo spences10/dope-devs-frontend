@@ -122,7 +122,7 @@
 						: ''}"
 					on:click={() => add_technology(technology)}
 					on:keydown={handle_keydown}
-					tabindex={index === focused_index ? '0' : '-1'}
+					tabindex={index === focused_index ?  0 : -1}
 				>
 					{technology.name}
 				</button>
