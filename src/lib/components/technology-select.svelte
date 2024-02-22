@@ -20,7 +20,7 @@
 		}, 200);
 	};
 
-	let focused_index = $state(0);
+	let focused_index = $state(-1);
 
 	const add_technology = (technology: {
 		id: number;
@@ -30,7 +30,7 @@
 			(item, index, self) =>
 				index === self.findIndex(t => t.id === item.id),
 		);
-		focused_index = 0;
+		focused_index = -1;
 	};
 
 	const remove_technology = (id: number) => {
@@ -112,17 +112,21 @@
 	{#if input_focused}
 		<div
 			class="relative max-h-56 w-full overflow-auto"
-			style="top:  0px;"
+			style="top:   0px;"
 		>
 			{#each filtered_technologies as technology, index}
 				<button
 					class="w-full text-left hover:bg-secondary hover:text-secondary-content {index ===
 					focused_index
 						? 'bg-secondary text-secondary-content'
+						: ''} {selected_items.some(
+						item => item.id === technology.id,
+					)
+						? 'bg-secondary text-secondary-content'
 						: ''}"
 					on:click={() => add_technology(technology)}
 					on:keydown={handle_keydown}
-					tabindex={index === focused_index ?  0 : -1}
+					tabindex={index === focused_index ? 0 : -1}
 				>
 					{technology.name}
 				</button>
