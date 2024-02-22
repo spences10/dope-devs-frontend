@@ -3,13 +3,18 @@
 		technologies: { id: number; name: string }[];
 	}>();
 
+	let input_focused = $state(false);
 	let search_query = $state('');
+	let selected_items = $state([]);
 	let filtered_technologies = $derived.by(() => {
 		if (!search_query) return technologies;
 		return technologies.filter(tech =>
 			tech.name.toLowerCase().includes(search_query.toLowerCase()),
 		);
 	});
+
+	const handle_focus = () => (input_focused = true);
+	const handle_blur = () => (input_focused = false);
 </script>
 
 <!-- when clicked into show list of items -->
@@ -46,19 +51,23 @@
 			autocomplete="off"
 			tabindex="0"
 			bind:value={search_query}
+			onfocus={handle_focus}
+			onblur={handle_blur}
 		/>
 		<!-- clear currnet selection -->
 		<span class="">&times;</span>
 	</div>
 	<!-- list of available items -->
-	<div
-		class="relative max-h-56 w-full overflow-auto"
-		style="top: 0px;"
-	>
-		{#each filtered_technologies as technology, index}
-			<div class="hover:bg-secondary hover:text-secondary-content">
-				{technology.name}
-			</div>
-		{/each}
-	</div>
+	{#if input_focused}
+		<div
+			class="relative max-h-56 w-full overflow-auto"
+			style="top: 0px;"
+		>
+			{#each filtered_technologies as technology, index}
+				<div class="hover:bg-secondary hover:text-secondary-content">
+					{technology.name}
+				</div>
+			{/each}
+		</div>
+	{/if}
 </div>
