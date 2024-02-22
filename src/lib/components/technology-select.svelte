@@ -20,6 +20,8 @@
 		}, 200);
 	};
 
+	let focused_index = $state(0);
+
 	const add_technology = (technology: {
 		id: number;
 		name: string;
@@ -28,6 +30,38 @@
 			(item, index, self) =>
 				index === self.findIndex(t => t.id === item.id),
 		);
+		focused_index = 0;
+	};
+
+	const remove_technology = (id: number) => {
+		selected_items = selected_items.filter(item => item.id !== id);
+	};
+
+	const key_handlers = {
+		ArrowDown: () => {
+			focused_index = Math.min(
+				focused_index + 1,
+				filtered_technologies.length - 1,
+			);
+		},
+		ArrowUp: () => {
+			focused_index = Math.max(focused_index - 1, 0);
+		},
+		Enter: () => {
+			if (filtered_technologies[focused_index]) {
+				add_technology(filtered_technologies[focused_index]);
+			}
+		},
+	};
+
+	const handle_keydown = (event: KeyboardEvent) => {
+		if (!input_focused) return;
+
+		const handler =
+			key_handlers[event.key as keyof typeof key_handlers];
+		if (handler) {
+			handler();
+		}
 	};
 </script>
 
@@ -49,11 +83,13 @@
 					class="badge badge-primary mb-0 mr-1 flex justify-between"
 				>
 					<span class="mb-1 mt-1 flex-grow pr-1">{item.name}</span>
-					<span
+					<button
 						class="cursor-pointer pb-2 text-xs hover:text-warning"
+						onclick={() => remove_technology(item.id)}
+						tabindex="0"
 					>
 						&times;
-					</span>
+					</button>
 				</div>
 			</div>
 		{/each}
@@ -67,6 +103,7 @@
 			bind:value={search_query}
 			onfocus={handle_focus}
 			onblur={handle_blur}
+			on:keydown={handle_keydown}
 		/>
 		<!-- clear currnet selection -->
 		<span class="">&times;</span>
@@ -75,17 +112,20 @@
 	{#if input_focused}
 		<div
 			class="relative max-h-56 w-full overflow-auto"
-			style="top: 0px;"
+			style="top:  0px;"
 		>
 			{#each filtered_technologies as technology, index}
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-				<p
-					class="hover:bg-secondary hover:text-secondary-content"
-					onclick={() => add_technology(technology)}
+				<button
+					class="w-full text-left hover:bg-secondary hover:text-secondary-content {index ===
+					focused_index
+						? 'bg-secondary text-secondary-content'
+						: ''}"
+					on:click={() => add_technology(technology)}
+					on:keydown={handle_keydown}
+					tabindex={index === focused_index ? '0' : '-1'}
 				>
 					{technology.name}
-				</p>
+				</button>
 			{/each}
 		</div>
 	{/if}
