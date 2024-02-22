@@ -5,7 +5,7 @@
 
 	let input_focused = $state(false);
 	let search_query = $state('');
-	let selected_items = $state([]);
+	let selected_items = $state<{ id: number; name: string }[]>([]);
 	let filtered_technologies = $derived.by(() => {
 		if (!search_query) return technologies;
 		return technologies.filter(tech =>
@@ -14,7 +14,21 @@
 	});
 
 	const handle_focus = () => (input_focused = true);
-	const handle_blur = () => (input_focused = false);
+	const handle_blur = () => {
+		setTimeout(() => {
+			input_focused = false;
+		}, 200);
+	};
+
+	const add_technology = (technology: {
+		id: number;
+		name: string;
+	}) => {
+		selected_items = [...selected_items, technology].filter(
+			(item, index, self) =>
+				index === self.findIndex(t => t.id === item.id),
+		);
+	};
 </script>
 
 <!-- when clicked into show list of items -->
@@ -23,18 +37,18 @@
 >
 	<!-- hidden multi select with selected values added -->
 	<select multiple class="hidden">
-		<option value="1" class=""> White </option>
-		<option value="3" class=""> Yellow </option>
-		<option value="5" class=""> Blue </option>
+		{#each selected_items as item, index}
+			<option value={item.id} class=""> {item.name} </option>
+		{/each}
 	</select>
 	<!-- tags displayed -->
 	<div class="flex flex-wrap place-items-center">
-		{#each ['White', 'Yellow', 'Blue'] as item, index}
+		{#each selected_items as item, index}
 			<div draggable="true" class="" style="">
 				<div
 					class="badge badge-primary mb-0 mr-1 flex justify-between"
 				>
-					<span class="mb-1 mt-1 flex-grow pr-1">{item}</span>
+					<span class="mb-1 mt-1 flex-grow pr-1">{item.name}</span>
 					<span
 						class="cursor-pointer pb-2 text-xs hover:text-warning"
 					>
@@ -64,10 +78,17 @@
 			style="top: 0px;"
 		>
 			{#each filtered_technologies as technology, index}
-				<div class="hover:bg-secondary hover:text-secondary-content">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+				<p
+					class="hover:bg-secondary hover:text-secondary-content"
+					onclick={() => add_technology(technology)}
+				>
 					{technology.name}
-				</div>
+				</p>
 			{/each}
 		</div>
 	{/if}
 </div>
+
+<pre>{JSON.stringify(selected_items, null, 2)}</pre>
