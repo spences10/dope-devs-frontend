@@ -67,7 +67,7 @@
 
 <!-- when clicked into show list of items -->
 <div
-	class="relative block min-w-52 max-w-full rounded-box border border-primary p-2 align-top"
+	class="relative block min-w-52 max-w-xs rounded-btn border border-primary p-2 align-top"
 >
 	<!-- hidden multi select with selected values added -->
 	<select multiple class="hidden">
