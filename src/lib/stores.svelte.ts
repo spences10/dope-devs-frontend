@@ -12,3 +12,7 @@ export interface CurrentUser {
 export const current_user = writable(
 	null,
 ) as Writable<CurrentUser | null>;
+
+export const selected_technologies_store = writable<
+	{ id: number; name: string }[]
+>([]);

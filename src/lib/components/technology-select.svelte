@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { selected_technologies_store } from '$lib/stores.svelte';
+
 	let { technologies } = $props<{
 		technologies: { id: number; name: string }[];
 	}>();
@@ -31,10 +33,12 @@
 				index === self.findIndex(t => t.id === item.id),
 		);
 		focused_index = -1;
+		$selected_technologies_store = selected_items;
 	};
 
 	const remove_technology = (id: number) => {
 		selected_items = selected_items.filter(item => item.id !== id);
+		$selected_technologies_store = selected_items;
 	};
 
 	const key_handlers = {
@@ -134,5 +138,3 @@
 		</div>
 	{/if}
 </div>
-
-<pre>{JSON.stringify(selected_items, null, 2)}</pre>

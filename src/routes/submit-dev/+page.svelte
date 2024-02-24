@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import TechnologySelect from '$lib/components/technology-select.svelte';
+	import { selected_technologies_store } from '$lib/stores.svelte.js';
 
 	let { data } = $props();
 	let form_data = $state({
 		selected_country: '',
 		name: '',
-		title: '',
 		avatar: '',
 		bio: '',
 		selected_technologies: [],
@@ -61,15 +62,11 @@
 	<label for="selected_technologies" class="label">
 		<span class="label-text text-base"> Technologies: </span>
 	</label>
-	<select
-		multiple
-		bind:value={form_data.selected_technologies}
-		name="selected_technologies"
-		class="select select-primary mb-10 w-full max-w-xs text-base"
-	>
-		<option disabled value="">Select technologies</option>
-		{#each data.technologies as technology}
-			<option value={technology.id}>{technology.name}</option>
+	<TechnologySelect technologies={data.technologies} />
+	<!-- hidden multi select with selected values added -->
+	<select multiple class="hidden" name="selected_technologies">
+		{#each $selected_technologies_store as item, index}
+			<option value={item.id} selected class="">{item.name}</option>
 		{/each}
 	</select>
 
@@ -94,5 +91,3 @@
 		Submit
 	</button>
 </form>
-
-<pre>{JSON.stringify(form_data, null, 2)}</pre>
