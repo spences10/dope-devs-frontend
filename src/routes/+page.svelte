@@ -4,6 +4,7 @@
 	let { data } = $props() as {
 		data: {
 			all_dope_devs: Array<{
+				id: number;
 				name: string;
 				bio: string;
 				avatar: string;

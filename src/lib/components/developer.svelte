@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+
 	let { dev } = $props<{
 		dev: {
+			id: number;
 			name: string;
 			bio: string;
 			avatar: string;
@@ -45,7 +48,25 @@
 			{/each}
 		</div>
 		<div class="card-actions justify-end">
-			<button class="btn btn-primary">Like</button>
+			<form
+				method="POST"
+				action="/api/like?id={dev.id}"
+				use:enhance={() => {
+					return ({ update, result }) => {
+						// handle_result(result);
+						update({ reset: false });
+					};
+				}}
+			>
+				<button
+					class="btn btn-primary btn-block flex justify-between"
+				>
+					<span> Dope &UpArrow; </span>
+					<span>
+						{dev.likes || 0}
+					</span>
+				</button>
+			</form>
 		</div>
 	</div>
 </article>
