@@ -29,10 +29,11 @@
 		<img src={dev.avatar} alt={dev.name} />
 	</figure>
 	<div class="card-body">
-		<h2 class="card-title">{dev.name}</h2>
-		<p>
-			{country_code_to_flag_emoji(dev.country_id)}
-		</p>
+		<h2 class="card-title">
+			{dev.name}
+			<span>{country_code_to_flag_emoji(dev.country_id)}</span>
+		</h2>
+
 		<p>{dev.bio}</p>
 		<div>
 			{#each technologies_array as technology}
