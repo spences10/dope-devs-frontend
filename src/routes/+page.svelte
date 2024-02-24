@@ -7,6 +7,7 @@
 				name: string;
 				bio: string;
 				avatar: string;
+				country_id:string;
 				country_name: string;
 				technologies: string;
 				likes: number;

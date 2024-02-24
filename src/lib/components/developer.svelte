@@ -4,6 +4,7 @@
 			name: string;
 			bio: string;
 			avatar: string;
+			country_id: string;
 			country_name: string;
 			technologies: string;
 			likes: number;
@@ -11,6 +12,16 @@
 	}>();
 
 	let technologies_array = dev.technologies.split(',');
+
+	const country_code_to_flag_emoji = (
+		countryCode: string,
+	): string => {
+		const offset = 127397;
+		return (
+			String.fromCodePoint(countryCode.charCodeAt(0) + offset) +
+			String.fromCodePoint(countryCode.charCodeAt(1) + offset)
+		);
+	};
 </script>
 
 <article class="card card-compact w-64 bg-base-100 shadow-xl">
@@ -19,6 +30,9 @@
 	</figure>
 	<div class="card-body">
 		<h2 class="card-title">{dev.name}</h2>
+		<p>
+			{country_code_to_flag_emoji(dev.country_id)}
+		</p>
 		<p>{dev.bio}</p>
 		<div>
 			{#each technologies_array as technology}
