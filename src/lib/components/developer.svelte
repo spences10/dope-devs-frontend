@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import type { ActionResult } from '@sveltejs/kit';
+	import { writable } from 'svelte/store';
 
 	let { dev } = $props<{
 		dev: {
@@ -24,6 +26,17 @@
 			String.fromCodePoint(countryCode.charCodeAt(0) + offset) +
 			String.fromCodePoint(countryCode.charCodeAt(1) + offset)
 		);
+	};
+
+	let button_disabled = writable(false);
+
+	const handle_result = (result: ActionResult) => {
+		if (result.type === 'failure') {
+			$button_disabled = true;
+			setTimeout(() => {
+				$button_disabled = false;
+			}, result?.data?.time_remaining * 1000);
+		}
 	};
 </script>
 
@@ -53,13 +66,15 @@
 				action="/api/like?id={dev.id}"
 				use:enhance={() => {
 					return ({ update, result }) => {
-						// handle_result(result);
+						handle_result(result);
 						update({ reset: false });
 					};
 				}}
+				class="w-full"
 			>
 				<button
 					class="btn btn-primary btn-block flex justify-between"
+					disabled={$button_disabled}
 				>
 					<span> Dope &UpArrow; </span>
 					<span>

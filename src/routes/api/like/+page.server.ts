@@ -1,15 +1,30 @@
+import { ratelimit } from '$lib/redis/client';
 import { db } from '$lib/server/database.js';
 import { dope_dev } from '$lib/server/schema/dope-dev.js';
+import { fail } from '@sveltejs/kit';
 import { eq, sql } from 'drizzle-orm';
 
 export const actions = {
-	default: async ({ url }) => {
+	default: async ({ url, getClientAddress }) => {
 		const dev_id = url.searchParams.get('id');
 		if (!dev_id) {
 			return {
 				status: 400,
 				body: 'ID is required.',
 			};
+		}
+
+		const ip = getClientAddress();
+		const rate_limit_attempt = await ratelimit.limit(ip);
+		if (!rate_limit_attempt.success) {
+			const time_remaining = Math.floor(
+				(rate_limit_attempt.reset - new Date().getTime()) / 1000,
+			);
+
+			return fail(429, {
+				error: `Rate limit exceeded. Try again in ${time_remaining} seconds`,
+				time_remaining,
+			});
 		}
 
 		try {
@@ -28,8 +43,6 @@ export const actions = {
 				.from(dope_dev)
 				.where(eq(dope_dev.id, parseInt(dev_id)))
 				.execute();
-
-			console.log('Fetched updated record:', updated_dev);
 
 			const likes = updated_dev[0]?.likes || 0;
 
