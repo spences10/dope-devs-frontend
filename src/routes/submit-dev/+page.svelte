@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import TechnologySelect from '$lib/components/technology-select.svelte';
-	import { selected_technologies_store } from '$lib/stores.svelte.js';
+	import { TechnologySelect } from '$lib/components';
+	import { selected_technologies_store } from '$lib/stores.svelte';
 
 	let { data } = $props();
 	let form_data = $state({
