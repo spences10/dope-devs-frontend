@@ -26,7 +26,8 @@ export const actions: Actions = {
 			!/^[a-z0-9_-]+$/.test(username)
 		) {
 			return fail(400, {
-				message: 'Invalid username',
+				message:
+					'Invalid username, must be between 3 and 31 characters, and only contain lowercase letters, numbers, underscores, and hyphens',
 			});
 		}
 		if (
@@ -35,7 +36,8 @@ export const actions: Actions = {
 			password.length > 255
 		) {
 			return fail(400, {
-				message: 'Invalid password',
+				message:
+					'Invalid password length, must be between 6 and 255 characters',
 			});
 		}
 
