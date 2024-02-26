@@ -68,6 +68,9 @@ devDependencies:
   eslint-plugin-svelte:
     specifier: ^2.36.0-next.4
     version: 2.36.0-next.5(eslint@8.56.0)(svelte@5.0.0-next.57)
+  fathom-client:
+    specifier: ^3.6.0
+    version: 3.6.0
   lucia:
     specifier: ^3.0.1
     version: 3.0.1
@@ -3078,6 +3081,10 @@ packages:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
     dependencies:
       reusify: 1.0.4
+    dev: true
+
+  /fathom-client@3.6.0:
+    resolution: {integrity: sha512-/mrgmVvpw4HqDCcqUfPulERhONKgnJGL74RAxfqKDuRQ+7w9lKoTHMzqBWE7WNBvmsgZEthQWJFOWOEjv+T3gA==}
     dev: true
 
   /fetch-blob@3.2.0:
