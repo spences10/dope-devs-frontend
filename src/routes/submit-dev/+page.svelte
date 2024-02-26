@@ -13,6 +13,13 @@
 	});
 </script>
 
+<nav class="flex justify-start">
+	<a href="/" class="btn">Back</a>
+	<form method="POST" action="/logout">
+		<button class="btn">Logout</button>
+	</form>
+</nav>
+
 <form
 	method="POST"
 	action="?/submit_dope_dev"

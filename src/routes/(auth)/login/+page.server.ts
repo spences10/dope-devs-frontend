@@ -67,6 +67,6 @@ export const actions: Actions = {
 			...session_cookie.attributes,
 		});
 
-		return redirect(302, '/');
+		return redirect(302, '/submit-dev');
 	},
 };

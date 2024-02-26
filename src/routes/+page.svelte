@@ -24,10 +24,13 @@
 	let selected_technology = $state('');
 
 	const filter_devs = (technology_name: string) => {
-		selected_technology = technology_name;
-		filtered_devs = data.all_dope_devs.filter(dev =>
-			dev.technologies.includes(technology_name),
-		);
+		selected_technology =
+			selected_technology === technology_name ? '' : technology_name;
+		filtered_devs = selected_technology
+			? data.all_dope_devs.filter(dev =>
+					dev.technologies.includes(technology_name),
+				)
+			: data.all_dope_devs;
 	};
 </script>
 
