@@ -19,10 +19,12 @@
 			}>;
 		};
 	};
-	
+
 	let filtered_devs = $state(data.all_dope_devs);
+	let selected_technology = $state('');
 
 	const filter_devs = (technology_name: string) => {
+		selected_technology = technology_name;
 		filtered_devs = data.all_dope_devs.filter(dev =>
 			dev.technologies.includes(technology_name),
 		);
@@ -34,8 +36,11 @@
 <div class="mb-10">
 	{#each data.all_technologies as { technology_name, technology_id }}
 		<button
-			class="badge badge-primary badge-xs mb-2 mr-2 cursor-pointer py-2"
-			on:click={() => filter_devs(technology_name)}
+			class="badge badge-xs mb-2 mr-2 cursor-pointer py-2 {technology_name ===
+			selected_technology
+				? 'badge-secondary'
+				: 'badge-primary'}"
+			onclick={() => filter_devs(technology_name)}
 		>
 			{technology_name}
 		</button>
