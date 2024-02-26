@@ -29,9 +29,12 @@
 	};
 
 	let button_disabled = writable(false);
+	let likes = writable(dev.likes || 0);
 
 	const handle_result = (result: ActionResult) => {
-		if (result.type === 'failure') {
+		if (result.type === 'success') {
+			$likes += 1;
+		} else if (result.type === 'failure') {
 			$button_disabled = true;
 			setTimeout(() => {
 				$button_disabled = false;
@@ -78,7 +81,7 @@
 				>
 					<span> Dope &UpArrow; </span>
 					<span>
-						{dev.likes || 0}
+						{$likes}
 					</span>
 				</button>
 			</form>

@@ -47,11 +47,9 @@ export const actions = {
 			const likes = updated_dev[0]?.likes || 0;
 
 			return {
+				success: true,
 				status: 200,
-				body: {
-					success: true,
-					likes,
-				},
+				likes,
 			};
 		} catch (error) {
 			console.error(`Error during update: ${error}`);
