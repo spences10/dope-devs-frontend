@@ -85,7 +85,6 @@
 		name="country_id"
 		class="select select-primary mb-10 w-full max-w-xs text-base"
 	>
-		<option disabled value="">Select a country</option>
 		{#each data.countries as country}
 			<option value={country.id}>{country.name}</option>
 		{/each}

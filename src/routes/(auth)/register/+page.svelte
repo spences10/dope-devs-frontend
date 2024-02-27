@@ -6,12 +6,30 @@
 	export let form: ActionData;
 </script>
 
-<h1>Sign in</h1>
-<form method="post" use:enhance>
-	<label for="username">Username</label>
-	<input name="username" id="username" /><br />
-	<label for="password">Password</label>
-	<input type="password" name="password" id="password" /><br />
-	<button>Continue</button>
+<h1 class="text-xl my-2">Register</h1>
+
+<p class="mb-4">Really this is just here so I can block your IP if you post anything indecent!</p>
+
+<form method="post" use:enhance class="form-control">
+	<label for="username" class="label">
+		<span class="label-text text-base">Username</span>
+	</label>
+	<input
+		name="username"
+		id="username"
+		class="input input-primary w-full max-w-xs text-base"
+	/>
+	<label for="password" class="label">
+		<span class="label-text text-base">Password</span>
+	</label>
+	<input
+		type="password"
+		name="password"
+		id="password"
+		class="input input-primary w-full max-w-xs text-base mb-8"
+	/>
+	<button class="max-x-xs btn btn-primary w-full max-w-xs text-base mb-2">
+		Continue
+	</button>
 	<p>{form?.message ?? ''}</p>
 </form>
