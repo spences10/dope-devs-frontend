@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 </script>
 
-{#if $page.url.pathname !== '/submit-dev'}
+{#if $page.url.pathname === '/'}
 	<nav class="flex justify-end">
 		<a href="/submit-dev" class="btn">Add Dope Dev</a>
 	</nav>
