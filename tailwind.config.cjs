@@ -10,7 +10,7 @@ const config = {
 	},
 
 	daisyui: {
-		themes: true,
+		themes: ['cyberpunk'],
 	},
 
 	plugins: [typography, daisyui],
