@@ -43,7 +43,7 @@
 	};
 </script>
 
-<article class="card card-compact w-64 bg-base-100 shadow-xl">
+<article class="card card-compact w-auto bg-base-100 shadow-xl sm:w-60">
 	<figure>
 		<img src={dev.avatar} alt={dev.name} />
 	</figure>
