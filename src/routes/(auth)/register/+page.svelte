@@ -6,7 +6,7 @@
 	export let form: ActionData;
 </script>
 
-<h1 class="text-xl my-2">Register</h1>
+<h1 class="text-xl my-4">Register</h1>
 
 <p class="mb-4">Really this is just here so I can block your IP if you post anything indecent!</p>
 

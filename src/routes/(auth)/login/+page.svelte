@@ -6,7 +6,7 @@
 	export let form: ActionData;
 </script>
 
-<h1 class="text-xl mb-4">Sign in</h1>
+<h1 class="my-4 text-xl">Sign in</h1>
 
 <form method="post" use:enhance class="form-control">
 	<label for="username" class="label">
@@ -24,11 +24,13 @@
 		type="password"
 		name="password"
 		id="password"
-		class="input input-primary w-full max-w-xs text-base mb-8"
+		class="input input-primary mb-8 w-full max-w-xs text-base"
 	/>
-	<button class="max-x-xs btn btn-primary w-full max-w-xs text-base mb-2">
+	<button
+		class="max-x-xs btn btn-primary mb-2 w-full max-w-xs text-base"
+	>
 		Continue
 	</button>
 	<p>{form?.message ?? ''}</p>
 </form>
-<a href="/register" class="link link-primary">Create an account</a>
+<a href="/register" class="link link-primary"> Create an account </a>

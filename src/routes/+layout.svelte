@@ -27,6 +27,6 @@
 
 <Nav />
 
-<main class="container mx-auto max-w-7xl px-4">
+<main class="max-w-8xl container mx-auto px-4">
 	{@render children()}
 </main>
