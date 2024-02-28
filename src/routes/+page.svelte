@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Developer, Header } from '$lib/components';
+	import { Developer, Footer, Header } from '$lib/components';
 
 	let { data } = $props() as {
 		data: {
@@ -22,6 +22,7 @@
 
 	let filtered_devs = $state(data.all_dope_devs);
 	let selected_technology = $state('');
+	let sort_mode = $state('default');
 
 	const filter_devs = (technology_name: string) => {
 		selected_technology =
@@ -31,6 +32,24 @@
 					dev.technologies.includes(technology_name),
 				)
 			: data.all_dope_devs;
+		sort_devs();
+	};
+
+	const sort_devs = () => {
+		let sorted = [...filtered_devs];
+		if (sort_mode === 'most_likes') {
+			sorted.sort((a, b) => b.likes - a.likes);
+		} else if (sort_mode === 'least_likes') {
+			sorted.sort((a, b) => a.likes - b.likes);
+		} else if (sort_mode === 'default') {
+			sorted = data.all_dope_devs;
+		}
+		filtered_devs = sorted;
+	};
+
+	const change_sort = (mode: string) => {
+		sort_mode = mode;
+		sort_devs();
 	};
 </script>
 
@@ -50,10 +69,24 @@
 	{/each}
 </div>
 
+<div class="mb-10">
+	<button on:click={() => change_sort('most_likes')} class="btn">
+		Most Likes
+	</button>
+	<button on:click={() => change_sort('least_likes')} class="btn">
+		Least Likes
+	</button>
+	<button on:click={() => change_sort('default')} class="btn">
+		Default
+	</button>
+</div>
+
 <div
-	class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+	class="grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 sm:justify-items-start sm:gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
 >
 	{#each filtered_devs as dev}
 		<Developer {dev} />
 	{/each}
 </div>
+
+<Footer />
