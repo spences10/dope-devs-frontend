@@ -22,7 +22,6 @@
 
 	let filtered_devs = $state(data.all_dope_devs);
 	let selected_technology = $state('');
-	let sort_order = $state('default');
 
 	const filter_devs = (technology_name: string) => {
 		selected_technology =
@@ -35,17 +34,17 @@
 	};
 
 	const sort_devs = (order: string) => {
-		sort_order = order;
 		if (order === 'most_likes') {
-			filtered_devs = [...data.all_dope_devs].sort(
+			filtered_devs = [...filtered_devs].sort(
 				(a, b) => b.likes - a.likes,
 			);
 		} else if (order === 'least_likes') {
-			filtered_devs = [...data.all_dope_devs].sort(
+			filtered_devs = [...filtered_devs].sort(
 				(a, b) => a.likes - b.likes,
 			);
 		} else {
 			filtered_devs = data.all_dope_devs;
+			selected_technology = '';
 		}
 	};
 </script>
