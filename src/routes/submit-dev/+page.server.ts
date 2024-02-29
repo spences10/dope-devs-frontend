@@ -37,16 +37,6 @@ const submit_dope_dev: Action = async event => {
 		'selected_technologies',
 	) as string[];
 
-	console.log('=====================');
-	console.log('form_data', {
-		name,
-		avatar,
-		bio,
-		selected_country,
-		selected_technologies,
-	});
-	console.log('=====================');
-
 	const insert_data = insert_dope_dev_schema.safeParse({
 		name,
 		avatar,

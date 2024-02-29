@@ -35,8 +35,6 @@ export const actions = {
 				.where(eq(dope_dev.id, parseInt(dev_id)))
 				.execute();
 
-			console.log('Update result:', updateResult);
-
 			// Fetch the updated record to verify the update
 			const updated_dev = await db
 				.select({ likes: dope_dev.likes })
