@@ -22,7 +22,7 @@
 
 	let filtered_devs = $state(data.all_dope_devs);
 	let selected_technology = $state('');
-	let sort_mode = $state('default');
+	let sort_order = $state('default');
 
 	const filter_devs = (technology_name: string) => {
 		selected_technology =
@@ -32,31 +32,28 @@
 					dev.technologies.includes(technology_name),
 				)
 			: data.all_dope_devs;
-		sort_devs();
 	};
 
-	const sort_devs = () => {
-		let sorted = [...filtered_devs];
-		if (sort_mode === 'most_likes') {
-			sorted.sort((a, b) => b.likes - a.likes);
-		} else if (sort_mode === 'least_likes') {
-			sorted.sort((a, b) => a.likes - b.likes);
-		} else if (sort_mode === 'default') {
-			sorted = data.all_dope_devs;
+	const sort_devs = (order: string) => {
+		sort_order = order;
+		if (order === 'most_likes') {
+			filtered_devs = [...data.all_dope_devs].sort(
+				(a, b) => b.likes - a.likes,
+			);
+		} else if (order === 'least_likes') {
+			filtered_devs = [...data.all_dope_devs].sort(
+				(a, b) => a.likes - b.likes,
+			);
+		} else {
+			filtered_devs = data.all_dope_devs;
 		}
-		filtered_devs = sorted;
-	};
-
-	const change_sort = (mode: string) => {
-		sort_mode = mode;
-		sort_devs();
 	};
 </script>
 
 <Header />
 
 <div class="mb-10">
-	{#each data.all_technologies as { technology_name, technology_id }}
+	{#each data.all_technologies as { technology_name, technology_id } (technology_id)}
 		<button
 			class="badge badge-xs mb-2 mr-2 cursor-pointer py-2 {technology_name ===
 			selected_technology
@@ -69,22 +66,20 @@
 	{/each}
 </div>
 
-<div class="mb-10">
-	<button on:click={() => change_sort('most_likes')} class="btn">
-		Most Likes
-	</button>
-	<button on:click={() => change_sort('least_likes')} class="btn">
-		Least Likes
-	</button>
-	<button on:click={() => change_sort('default')} class="btn">
-		Default
-	</button>
-</div>
+<button onclick={() => sort_devs('most_likes')} class="btn">
+	Most Likes
+</button>
+<button onclick={() => sort_devs('least_likes')} class="btn">
+	Least Likes
+</button>
+<button onclick={() => sort_devs('default')} class="btn mb-10">
+	Default
+</button>
 
 <div
 	class="grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 sm:justify-items-start sm:gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
 >
-	{#each filtered_devs as dev}
+	{#each filtered_devs as dev (dev.id)}
 		<Developer {dev} />
 	{/each}
 </div>
