@@ -32,6 +32,7 @@ const submit_dope_dev: Action = async event => {
 	const name = form_data.get('name') as string;
 	const avatar = form_data.get('avatar') as string;
 	const bio = form_data.get('bio') as string;
+	const likes = 0;
 	const selected_country = form_data.get('country_id') as string;
 	const selected_technologies = form_data.getAll(
 		'selected_technologies',
@@ -41,6 +42,7 @@ const submit_dope_dev: Action = async event => {
 		name,
 		avatar,
 		bio,
+		likes,
 		country_id: selected_country,
 	});
 	if (!insert_data.success) {
