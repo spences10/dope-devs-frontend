@@ -14,7 +14,7 @@ let cache = {
 	last_updated: 0,
 };
 
-const CACHE_EXPIRATION_TIME = 30 * 60 * 1000; //  30 minutes in milliseconds
+const CACHE_EXPIRATION_TIME = 1 * 60 * 1000; //  1 minutes in milliseconds
 
 export const load: PageServerLoad = async event => {
 	const now = Date.now();
