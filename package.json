@@ -17,7 +17,7 @@
 		"drizzle:migrate": "tsm ./src/lib/server/migrate.ts"
 	},
 	"devDependencies": {
-		"@libsql/client": "^0.5.2",
+		"@libsql/client": "^0.6.0",
 		"@lucia-auth/adapter-sqlite": "^3.0.0",
 		"@playwright/test": "^1.42.0",
 		"@sveltejs/adapter-auto": "^3.1.1",
