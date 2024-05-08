@@ -46,7 +46,7 @@ devDependencies:
     version: 10.4.19(postcss@8.4.38)
   daisyui:
     specifier: ^4.10.3
-    version: 4.10.3(postcss@8.4.38)
+    version: 4.11.1(postcss@8.4.38)
   dotenv:
     specifier: ^16.4.5
     version: 16.4.5
@@ -58,7 +58,7 @@ devDependencies:
     version: 0.30.10(@libsql/client@0.6.0)
   drizzle-zod:
     specifier: ^0.5.1
-    version: 0.5.1(drizzle-orm@0.30.10)(zod@3.23.6)
+    version: 0.5.1(drizzle-orm@0.30.10)(zod@3.23.8)
   eslint:
     specifier: ^9.1.1
     version: 9.1.1
@@ -2162,8 +2162,8 @@ packages:
       type: 1.2.0
     dev: true
 
-  /daisyui@4.10.3(postcss@8.4.38):
-    resolution: {integrity: sha512-LuxUmktsfO8nk0MKbg8NAth0K199pL2FzPMqhy7PGKFQ9LWIDdYVnc4f60Ior1bvbyZcXoH6/hhU068UuHksjA==}
+  /daisyui@4.11.1(postcss@8.4.38):
+    resolution: {integrity: sha512-obT9CUbQdW6eoHwSeT5VwaRrWlwrM4OT5qlfdJ0oQlSIEYhwnEl2+L2fwu5PioLbitwuMdYC2X8I1cyy8Pf6LQ==}
     engines: {node: '>=16.9.0'}
     dependencies:
       css-selector-tokenizer: 0.8.0
@@ -2373,14 +2373,14 @@ packages:
       '@libsql/client': 0.6.0
     dev: true
 
-  /drizzle-zod@0.5.1(drizzle-orm@0.30.10)(zod@3.23.6):
+  /drizzle-zod@0.5.1(drizzle-orm@0.30.10)(zod@3.23.8):
     resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
     peerDependencies:
       drizzle-orm: '>=0.23.13'
       zod: '*'
     dependencies:
       drizzle-orm: 0.30.10(@libsql/client@0.6.0)
-      zod: 3.23.6
+      zod: 3.23.8
     dev: true
 
   /eastasianwidth@0.2.0:
@@ -4874,6 +4874,6 @@ packages:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: true
 
-  /zod@3.23.6:
-    resolution: {integrity: sha512-RTHJlZhsRbuA8Hmp/iNL7jnfc4nZishjsanDAfEY1QpDQZCahUp3xDzl+zfweE9BklxMUcgBgS1b7Lvie/ZVwA==}
+  /zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
     dev: true
