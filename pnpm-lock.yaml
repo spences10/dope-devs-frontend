@@ -52,7 +52,7 @@ devDependencies:
     version: 16.4.5
   drizzle-kit:
     specifier: ^0.22.0
-    version: 0.22.0
+    version: 0.22.7
   drizzle-orm:
     specifier: ^0.30.10
     version: 0.30.10(@libsql/client@0.6.2)
@@ -159,7 +159,7 @@ packages:
     resolution: {integrity: sha512-FxEMIkJKnodyA1OaCUoEvbYRkoZlLZ4d/eXFu9Fh8CbBBgP5EmZxrfTRyN0qpXZ4vOvqnE5YdRdcrmUUXuU+dA==}
     dependencies:
       '@esbuild-kit/core-utils': 3.3.2
-      get-tsconfig: 4.7.2
+      get-tsconfig: 4.7.5
     dev: true
 
   /@esbuild/aix-ppc64@0.19.12:
@@ -2218,8 +2218,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /drizzle-kit@0.22.0:
-    resolution: {integrity: sha512-vmkZZ1SOItQJayFHqEYxjxTCfJdKgAa5eQFj7tkIP+j9VtGnPZ1lhucS0tdjmYfJa30n0LlJ3gXXph+hxrGQPA==}
+  /drizzle-kit@0.22.7:
+    resolution: {integrity: sha512-9THPCb2l1GPt7wxhws9LvTR0YG565ZlVgTuqGMwjs590Kch1pXu4GyjEArVijSF5m0OBj3qgdeKmuJXhKXgWFw==}
     hasBin: true
     dependencies:
       '@esbuild-kit/esm-loader': 2.6.5
@@ -2491,7 +2491,7 @@ packages:
     peerDependencies:
       esbuild: '>=0.12 <1'
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5
       esbuild: 0.19.12
     transitivePeerDependencies:
       - supports-color
@@ -2991,8 +2991,8 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
-  /get-tsconfig@4.7.2:
-    resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
+  /get-tsconfig@4.7.5:
+    resolution: {integrity: sha512-ZCuZCnlqNzjb4QprAzXKdpp/gh6KTxSJuw3IBsPnV/7fV4NxC9ckB+vPTt8w7fJA0TaSD7c55BR47JD6MEDyDw==}
     dependencies:
       resolve-pkg-maps: 1.0.0
     dev: true
