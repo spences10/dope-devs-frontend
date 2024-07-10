@@ -55,10 +55,10 @@ devDependencies:
     version: 0.22.8
   drizzle-orm:
     specifier: ^0.31.0
-    version: 0.31.2(@libsql/client@0.7.0)
+    version: 0.31.3(@libsql/client@0.7.0)(@prisma/client@5.16.1)
   drizzle-zod:
     specifier: ^0.5.1
-    version: 0.5.1(drizzle-orm@0.31.2)(zod@3.23.8)
+    version: 0.5.1(drizzle-orm@0.31.3)(zod@3.23.8)
   eslint:
     specifier: ^9.1.1
     version: 9.6.0
@@ -1374,6 +1374,17 @@ packages:
     resolution: {integrity: sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==}
     dev: true
 
+  /@prisma/client@5.16.1:
+    resolution: {integrity: sha512-wM9SKQjF0qLxdnOZIVAIMKiz6Hu7vDt4FFAih85K1dk/Rr2mdahy6d3QP41K62N9O0DJJA//gUDA3Mp49xsKIg==}
+    engines: {node: '>=16.13'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dev: true
+
   /@rollup/rollup-android-arm-eabi@4.18.0:
     resolution: {integrity: sha512-Tya6xypR10giZV1XzxmH5wr25VcZSncG0pZIjfePT0OVBvqNEurzValetGNarVrGiq66EBVAFn15iYX4w6FKgQ==}
     cpu: [arm]
@@ -2195,8 +2206,8 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.31.2(@libsql/client@0.7.0):
-    resolution: {integrity: sha512-QnenevbnnAzmbNzQwbhklvIYrDE8YER8K7kSrAWQSV1YvFCdSQPzj+jzqRdTSsV2cDqSpQ0NXGyL1G9I43LDLg==}
+  /drizzle-orm@0.31.3(@libsql/client@0.7.0)(@prisma/client@5.16.1):
+    resolution: {integrity: sha512-EpBqJeeUHH3jQrXSojCnclCoP5jMZafzSQs0NO1cu7t6cf4F+8acC9DjyWhanCqEmRn+0nJyAEU6xHQDYTEjnQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -2206,6 +2217,7 @@ packages:
       '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
+      '@prisma/client': '*'
       '@tidbcloud/serverless': '*'
       '@types/better-sqlite3': '*'
       '@types/pg': '*'
@@ -2279,15 +2291,16 @@ packages:
         optional: true
     dependencies:
       '@libsql/client': 0.7.0
+      '@prisma/client': 5.16.1
     dev: true
 
-  /drizzle-zod@0.5.1(drizzle-orm@0.31.2)(zod@3.23.8):
+  /drizzle-zod@0.5.1(drizzle-orm@0.31.3)(zod@3.23.8):
     resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
     peerDependencies:
       drizzle-orm: '>=0.23.13'
       zod: '*'
     dependencies:
-      drizzle-orm: 0.31.2(@libsql/client@0.7.0)
+      drizzle-orm: 0.31.3(@libsql/client@0.7.0)(@prisma/client@5.16.1)
       zod: 3.23.8
     dev: true
 
