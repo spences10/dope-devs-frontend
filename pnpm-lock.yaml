@@ -57,11 +57,11 @@ importers:
         specifier: ^0.26.0
         version: 0.26.2
       drizzle-orm:
-        specifier: ^0.34.0
-        version: 0.34.0(@libsql/client@0.14.0)
+        specifier: ^0.39.0
+        version: 0.39.0(@libsql/client@0.14.0)
       drizzle-zod:
         specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.34.0(@libsql/client@0.14.0))(zod@3.23.8)
+        version: 0.5.1(drizzle-orm@0.39.0(@libsql/client@0.14.0))(zod@3.23.8)
       eslint:
         specifier: ^9.1.1
         version: 9.12.0(jiti@1.21.6)
@@ -1379,14 +1379,15 @@ packages:
     resolution: {integrity: sha512-cMq8omEKywjIy5KcqUo6LvEFxkl8/zYHsgYjFVXjmPWWtuW4blcz+YW9+oIhoaALgs2ebRjzXwsJgN9i6P49Dw==}
     hasBin: true
 
-  drizzle-orm@0.34.0:
-    resolution: {integrity: sha512-6l9v65YoCr53UOWjyPPNYYQsZYvtzgxMKxljQ5VlJcS3/zM81MXnWeSfqQFlrUHxoTNgyi9BWHysUE8+c0odzA==}
+  drizzle-orm@0.39.0:
+    resolution: {integrity: sha512-kkZwo3Jvht0fdJD/EWGx0vYcEK0xnGrlNVaY07QYluRZA9N21B9VFbY+54bnb/1xvyzcg97tE65xprSAP/fFGQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
-      '@cloudflare/workers-types': '>=3'
-      '@electric-sql/pglite': '>=0.1.1'
+      '@cloudflare/workers-types': '>=4'
+      '@electric-sql/pglite': '>=0.2.0'
       '@libsql/client': '>=0.10.0'
-      '@neondatabase/serverless': '>=0.1'
+      '@libsql/client-wasm': '>=0.10.0'
+      '@neondatabase/serverless': '>=0.10.0'
       '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
@@ -1400,7 +1401,7 @@ packages:
       '@xata.io/client': '*'
       better-sqlite3: '>=7'
       bun-types: '*'
-      expo-sqlite: '>=13.2.0'
+      expo-sqlite: '>=14.0.0'
       knex: '*'
       kysely: '*'
       mysql2: '>=2'
@@ -1418,6 +1419,8 @@ packages:
       '@electric-sql/pglite':
         optional: true
       '@libsql/client':
+        optional: true
+      '@libsql/client-wasm':
         optional: true
       '@neondatabase/serverless':
         optional: true
@@ -2062,6 +2065,7 @@ packages:
 
   oslo@1.2.1:
     resolution: {integrity: sha512-HfIhB5ruTdQv0XX2XlncWQiJ5SIHZ7NHZhVyHth0CSZ/xzge00etRyYy/3wp/Dsu+PkxMC+6+B2lS/GcKoewkA==}
+    deprecated: Package is no longer supported. Please see https://oslojs.dev for the successor project.
 
   p-limit@3.1.0:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}
@@ -3648,13 +3652,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.34.0(@libsql/client@0.14.0):
+  drizzle-orm@0.39.0(@libsql/client@0.14.0):
     optionalDependencies:
       '@libsql/client': 0.14.0
 
-  drizzle-zod@0.5.1(drizzle-orm@0.34.0(@libsql/client@0.14.0))(zod@3.23.8):
+  drizzle-zod@0.5.1(drizzle-orm@0.39.0(@libsql/client@0.14.0))(zod@3.23.8):
     dependencies:
-      drizzle-orm: 0.34.0(@libsql/client@0.14.0)
+      drizzle-orm: 0.39.0(@libsql/client@0.14.0)
       zod: 3.23.8
 
   eastasianwidth@0.2.0: {}
